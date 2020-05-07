@@ -15,7 +15,7 @@ import os
 import keras
 import matplotlib.pyplot as plt
 from keras.layers import Dense,GlobalAveragePooling2D, Flatten, Dropout
-from keras.applications import DenseNet201
+from keras.applications import MobileNetV2
 from keras.preprocessing import image
 from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Model
@@ -31,7 +31,7 @@ Y_train = np.load("../content/gdrive/My Drive/Y_train_PLS.npy")
 X_valid = np.load("../content/gdrive/My Drive/X_val_PLS.npy")
 Y_valid = np.load("../content/gdrive/My Drive/Y_val_PLS.npy")
 X_train = np.load("../content/gdrive/My Drive/X_train_PLS.npy")
-model5=DenseNet201(weights='imagenet',include_top=False,input_shape=(224,224,3))
+model5=MobileNetV2(weights='imagenet',include_top=False,input_shape=(224,224,3))
 x=model5.output
 x = Flatten()(x)
 features = Dense(256,activation=keras.layers.LeakyReLU(alpha=0.1))(x)
